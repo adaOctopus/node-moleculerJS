@@ -14,3 +14,13 @@ broker.createService({
         }
     }
 })
+
+async function start() {
+    await broker.start();
+    const res = await broker.call('greeter.sayHello', { name: 'Moleculer' });
+    console.log('Broker is running...');
+    console.log(res);
+     broker.stop();
+}
+
+start();
