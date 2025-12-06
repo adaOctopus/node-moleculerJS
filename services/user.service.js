@@ -15,12 +15,17 @@ function generateUserId() {
 broker.createService({
     name: 'user',
     actions: {
-        createUser(ctx) {
+        async createUser(ctx) {
             const { email, userName } = ctx.params;
             const id = generateUserId();
             const newUser = { id, userName, email}
             user.push(newUser);
             return newUser;
+        },
+        async getUser(ctx) {
+            return users;
         }
     }
 })
+
+export default broker;
